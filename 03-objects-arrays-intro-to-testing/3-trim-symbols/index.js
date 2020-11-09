@@ -5,21 +5,6 @@
  * @returns {string} - the new string without extra symbols according passed size
  */
 
-// function needCompress(string, pos, sz) {
-//   let cnt = 0;
-//   const ch = string[pos];
-
-//   for (let i = pos + 1; i < string.length; i++) {
-//     if (string[i] === ch) {
-//       cnt++;
-//     } else {
-//       break;
-//     }
-//   }
-//   if (cnt > sz) return true;
-//   return false;
-// }
-
 export function trimSymbols(string, size) {
   if (string.length === 0) {
     return "";
@@ -49,13 +34,3 @@ export function trimSymbols(string, size) {
   });
   return res;
 }
-
-// console.log(trimSymbols("xxxaaaaab", 1));
-
-/*
-create obj
-  char - needRemove
-
-
-
-*/

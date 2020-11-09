@@ -8,17 +8,10 @@ export function createGetter(path) {
 
   return function(obj) {
     let res = Object.assign({}, obj);
-
     for (const item of arr) {
-      // console.log(item);
       res = res?.[item];
-      // console.error(res)
     }
-
-
     return res;
   };
 }
 
-// const getter = createGetter('more.nested.property');
-// console.log(getter({more: {nested: {property: 1}}}));
