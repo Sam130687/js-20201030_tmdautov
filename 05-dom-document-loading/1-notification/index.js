@@ -1,11 +1,10 @@
 export default class NotificationMessage {
+  element;
 
-
-  constructor(text, obj) {
+  constructor(text, {duration = 1000, type = 'success'} = {}) {
     this.text = text;
-    this.duration = obj?.duration;
-    this.type = obj?.type;
-    console.log(this.text, this.duration, this.type)
+    this.duration = duration;
+    this.type = type;
 
 
     this.render();
@@ -14,7 +13,6 @@ export default class NotificationMessage {
 
   render() {
     const element = document.createElement('div');
-
     element.innerHTML = this.getTemplate();
 
     // NOTE: в этой строке мы избавляемся от обертки-пустышки в виде `div`
@@ -24,7 +22,7 @@ export default class NotificationMessage {
 
   getTemplate() {
     return `
-      <div class="notification ${this.type}" style="--value:${this.duration}s">
+      <div class="notification ${this.type}" style="--value:${this.duration / 1000}s">
         <div class="timer"></div>
         <div class="inner-wrapper">
           <div class="notification-header">success</div>
@@ -40,13 +38,13 @@ export default class NotificationMessage {
     // NOTE: в данном методе добавляем обработчики событий, если они есть
   }
 
-  show() {
-    const root = document.getElementById('root');
-    root.append(this.element);
+  show(target = document.body) {
+    // const root = document.getElementById('root');
+    // root.append(this.element);
+    // const target = document.body;
+    target.append(this.element);
 
-    setTimeout(() => {
-      this.remove();
-    }, this.duration);
+    setTimeout(() => this.remove(), this.duration);
   }
 
   remove () {
