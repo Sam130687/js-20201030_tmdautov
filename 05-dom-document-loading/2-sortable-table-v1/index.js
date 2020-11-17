@@ -8,8 +8,6 @@ export default class SortableTable {
 
     this.render();
     this.initEventListeners();
-
-    console.log(this.data);
   }
 
   render() {
